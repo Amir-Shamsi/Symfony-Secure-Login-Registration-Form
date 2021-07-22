@@ -4,12 +4,22 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="Mmm! You'v already registered! I think we know each other 😉"
+ * )
+ * @UniqueEntity(
+ *      fields={"email"},
+ *      message="Weeeeel, I think this email and I had met before 🤭"
+ * )
  */
-class User
+class User implements \Symfony\Component\Security\Core\User\UserInterface
 {
     /**
      * @ORM\Id
@@ -29,7 +39,7 @@ class User
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;
 
@@ -39,7 +49,9 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -100,6 +112,22 @@ class User
 
         return $this;
     }
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
 
     public function getEmail(): ?string
     {

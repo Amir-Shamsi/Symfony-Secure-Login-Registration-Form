@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserRegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,25 +22,21 @@ class RegisterController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData();
-            dd(['firstName']);
-            $user = new User();
-            $user->setFirstName($data['firstName']);
-            $user->setLastName($data['lastName']);
-            $user->setUsername($data['username']);
-            $user->setEmail($data['email']);
+            /** @var User $user */
+            $user = $form->getData();
             $user->setCreatedAt(new \DateTimeImmutable());
-            $user->setPassword($passwordHash->hashPassword(
+            $user->setPassword($passwordHash->encodePassword(
                 $user,
                 //Security::doubleHash(
-                    $request->request->get('password')
+                    $form['rawPassword']->getData()
                 //)
             ));
 
             $manager->persist($user);
             $manager->flush();
 
-        $this->addFlash('success', 'Guess What!!! You Registered 😃');
+            $this->addFlash('success', 'Guess What!!! You Registered 😃');
+            return $this->redirectToRoute('app_register');
         }
 
         return $this->render('register/registration.html.twig', [
