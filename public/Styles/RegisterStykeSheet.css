@@ -9,7 +9,7 @@ html {
 
 #grad1 {
     background-color: #9C27B0;
-    background-image: linear-gradient(120deg, #FF4081, #81D4FA)
+    background-image: linear-gradient(180deg, #40acff, #81fa83)
 }
 
 #msform {
@@ -21,7 +21,7 @@ html {
 #msform fieldset .form-card {
     background: white;
     border: 0 none;
-    border-radius: 0px;
+    border-radius: 0;
     box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
     padding: 20px 40px 30px 40px;
     box-sizing: border-box;

@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @UniqueEntity(
  *      fields={"email"},
- *      message="Weeeeel, I think this email and I had met before 🤭"
+ *      message="Weeeeel, I think this email and I'v met before 🤭"
  * )
  */
 class User implements \Symfony\Component\Security\Core\User\UserInterface
@@ -30,21 +30,26 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     *
      */
     private $password;
 
@@ -57,6 +62,7 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Assert\NotBlank()
      */
     private $createdAt;
 
