@@ -119,6 +119,14 @@ select.list-dt {
     margin: 2px
 }
 
+.message{
+    alignment: center;
+    width: 300px;
+    margin-left: 40%;
+    margin-bottom: -2%;
+    text-align: center;
+}
+
 select.list-dt:focus {
     border-bottom: 2px solid skyblue
 }

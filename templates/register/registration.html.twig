@@ -11,8 +11,15 @@
 
     <!----------------------------------------------------------------------------------------------------------------->
     <div class="container-fluid" id="grad1" style="height: 753px">
+        {% block show_message %}
+            {% for message in app.flashes('success') %}
+            <div class="alert alert-success message">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endblock %}
         <div class="row justify-content-center mt-0" style="margin-top: 200px" >
-            <div class="col-11 col-sm-9 col-md-7 col-lg-6  p-0 mt-3 mb-2">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-6  p-0 mt-3 mb-2" >
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                     <h2 class="text-center"><strong>Register To Our Family!</strong></h2>
                     <p  class="text-center">Let's be a bigger family 😄🎈</p>
@@ -35,16 +42,12 @@
 
                                     <div class="row">
                                         <div class="col">
-                                            {{ form_row(registerForm.rawPassword, {
-                                                label: 'Password'
-
-                                            }) }}
+                                            {{ form_row(registerForm.rawPassword.first) }}
                                         </div>
                                         <div class="col">
-                                            {{ form_row(registerForm.confirmRawPassword, {
-                                                label: 'Confirm Password'
-                                            }) }}
+                                            {{ form_row(registerForm.rawPassword.second) }}
                                         </div>
+
                                     </div>
                                     <div class="row">
                                         <div class="col">
@@ -57,9 +60,8 @@
                                         </div>
                                     </div>
 
-
                                 <div  class="text-center">
-                                    <button type="submit" class="btn btn-primary ">Register</button>
+                                    <button type="submit"  class="btn btn-primary ">Register</button>
                                 </div>
                                 {{ form_end(registerForm) }}
 

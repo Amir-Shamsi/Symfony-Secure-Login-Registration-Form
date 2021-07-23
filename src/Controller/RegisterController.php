@@ -35,7 +35,7 @@ class RegisterController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            $this->addFlash('success', 'Guess What!!! You Registered 😃');
+            $this->addFlash('success', 'Guess What!!! You Registered '.$user->getFirstname().' 😃');
             return $this->redirectToRoute('app_register');
         }
 

@@ -48,7 +48,6 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      *
      */
     private $password;
@@ -62,7 +61,6 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
 
     /**
      * @ORM\Column(type="datetime_immutable")
-     * @Assert\NotBlank()
      */
     private $createdAt;
 

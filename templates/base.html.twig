@@ -19,11 +19,13 @@
     </head>
     <body>
 
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
+{#        {% block show_massege %}#}
+{#            {% for message in app.flashes('success') %}#}
+{#                <div class="alert alert-success">#}
+{#                    {{ message }}#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        {% endblock %}#}
         {% block body %}{% endblock %}
     </body>
 </html>
