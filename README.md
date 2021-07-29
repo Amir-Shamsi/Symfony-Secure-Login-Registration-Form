@@ -1,6 +1,6 @@
 # Symfony Secure Login & Registration Form with all custom validations 
 
-<p> Symfony registration form with all validations and no cheat🥱</p>
+<p> Symfony registration form with all validations; no cheating allowed🥱</p>
 <p> will code the login soon!</p>
 <p> just have some project to do :)</p>
 <p> Enjoy!</p>
