@@ -2,7 +2,7 @@
 
 <p> Symfony registration form with all validations; no cheating allowed🥱</p>
 <p> will code the login soon!</p>
-<p> just have some project to do :)</p>
+<p> just have some projects to do :)</p>
 <p> Enjoy!</p>
 
 ## Installation
